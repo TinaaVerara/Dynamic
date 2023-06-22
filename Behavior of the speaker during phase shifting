@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def generate_sine_wave(amplitude, frequency, phase, duration, sampling_rate):
+    time = np.linspace(0, duration, int(duration * sampling_rate), endpoint=False)
+    signal = amplitude * np.sin(2 * np.pi * frequency * time + phase)
+    return time, signal
+
+if __name__ == "__main__":
+    # Generate and plot a sine wave
+    amplitude = 1.0
+    frequency = 2.0
+    phase = np.pi / 4
+    duration = 2.0
+    sampling_rate = 44100
+
+    time, signal = generate_sine_wave(amplitude, frequency, phase, duration, sampling_rate)
+
+    plt.plot(time, signal)
+    plt.xlabel("Time")
+    plt.ylabel("Amplitude")
+    plt.title("Sine Wave")
+    plt.show()
